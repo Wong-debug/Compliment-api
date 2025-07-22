@@ -1,10 +1,18 @@
 # main.py
+
 from fastapi import FastAPI
 from pydantic import BaseModel
 import random
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
 
+app.add_middleware(
+  CORSMiddleware,
+  allow_origins=["https://thetoolsnest.com"],
+  allow_methods=["*"],
+  allow_headers=["*"],
+)
 class Input(BaseModel):
     name: str
 
